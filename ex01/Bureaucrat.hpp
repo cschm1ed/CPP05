@@ -14,6 +14,9 @@
 #define CPP05_BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -28,14 +31,13 @@ public:
 
 	void incrementGrade(unsigned int amount);
 	void decrementGrade(unsigned int amount);
+	void signForm(Form &toSign);
 
 	class GradeTooHighException : public std::exception {
-	public:
 		 virtual const char *what() const _NOEXCEPT;
 	};
 
 	class GradeTooLowException : public std::exception {
-	public:
 		virtual const char *what() const _NOEXCEPT;
 	};
 

@@ -11,50 +11,60 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int	main() {
 	Bureaucrat* Bert = nullptr;
 
 	try {
-		Bert = new Bureaucrat("Bert", 1);
+		Bert = new Bureaucrat("Bert", 10);
+		std::cout << *Bert << "\n";
 	} catch (const std::exception & e) {
-		std::cerr <<  e.what() << "\n";
+		std::cerr << e.what() << "\n";
 	}
 
+	Form* Visa = nullptr;
 	try {
-		Bureaucrat	Malcolm("Malcolm", 0);
+		Visa = new Form("Visa", 10, 5);
+		std::cout << *Visa << "\n";
 	} catch (const std::exception & e) {
 		std::cerr << e.what() << "\n";
 	}
 
 	try {
-		Bureaucrat	Hannah("Hannah", 151);
+		Visa->beSigned(*Bert);
 	} catch (const std::exception & e) {
 		std::cerr << e.what() << "\n";
 	}
 
-	Bert->decrementGrade(10);
-
+	Form* Contract;
 	try {
-		Bureaucrat	Alberto("Alberto", 10);
+		Contract = new Form("Contract", 1, 1);
+		std::cout << *Contract << "\n";
 		try {
-			Alberto.incrementGrade(100);
-		} catch (const std::exception &e) {
+			Bert->signForm(*Contract);
+		} catch (const std::exception & e) {
 			std::cerr << e.what() << "\n";
 		}
 		try {
-			Alberto.decrementGrade(50);
-		} catch (const std::exception &e) {
+			Bert->incrementGrade(9);
+		} catch (const std::exception & e) {
 			std::cerr << e.what() << "\n";
 		}
-	} catch (const std::exception &e) {
+		try {
+			Bert->signForm(*Contract);
+		} catch (const std::exception & e) {
+			std::cerr << e.what() << "\n";
+		}
+	} catch (const std::exception & e) {
 		std::cerr << e.what() << "\n";
 	}
 
-	std::cout << *Bert << "\n";
 
+	delete	Contract;
 	delete	Bert;
+	delete	Visa;
 
 	return 0;
 }

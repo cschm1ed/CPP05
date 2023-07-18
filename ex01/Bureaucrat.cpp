@@ -35,7 +35,7 @@ void Bureaucrat::incrementGrade(unsigned int amount) {
 	if (_grade - amount < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-	std::cout << "Bureaucrat " << _name << " grade incremented by" << amount << "\n";
+	std::cout << "Bureaucrat " << _name << " grade incremented by " << amount << "\n";
 	_grade -= amount;
 }
 
@@ -75,4 +75,13 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Bureaucrat::GradeTooLowException";
+}
+
+void Bureaucrat::signForm(Form &toSign) {
+	if (_grade > toSign.getReqGradeSign()) {
+		std::cout << _name << " couldn't sign " << toSign.getName() << " because his grade is to low.\n";
+		return ;
+	}
+	std::cout << _name << " signed " << toSign.getName();
+	toSign.setIsSigned(true);
 }
