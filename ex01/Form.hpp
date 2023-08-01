@@ -30,7 +30,7 @@ public:
 
 	const std::string &getName() const;
 
-	bool getIsSigned() const;
+	bool IsSigned() const;
 
 	void setIsSigned(bool isSigned);
 

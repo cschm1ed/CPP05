@@ -39,7 +39,7 @@ const std::string &Form::getName() const {
 	return _name;
 }
 
-bool Form::isIsSigned() const {
+bool Form::IsSigned() const {
 	return _isSigned;
 }
 
@@ -56,7 +56,7 @@ int Form::getReqGradeExec() const {
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &form) {
-	os << "Form: " << form.getName() << " _isSigned: " << form.getIsSigned() << " _reqGradeSign: "
+	os << "Form: " << form.getName() << " _isSigned: " << form.IsSigned() << " _reqGradeSign: "
 	   << form.getReqGradeSign()
 	   << " _reqGradeExec: " << form.getReqGradeExec();
 	return os;
