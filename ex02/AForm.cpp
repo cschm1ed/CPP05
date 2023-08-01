@@ -66,6 +66,10 @@ const char *AForm::GradeTooLowException::what() const throw() {
 	return "AForm::GradeTooHighException";
 }
 
+const char *AForm::FormNotSignedException::what() const throw() {
+	return "AForm::FormNotSignedException";
+}
+
 void AForm::beSigned(Bureaucrat &signer) {
 	if (signer.getGrade() > _reqGradeSign) {
 		throw AForm::GradeTooLowException();
@@ -81,6 +85,9 @@ const std::string &AForm::getTarget() const {
 void AForm::execute(const Bureaucrat &executor) const {
 	if (executor.getGrade() > _reqGradeExec) {
 		throw AForm::GradeTooLowException();
+	}
+	else if (!_isSigned) {
+		throw AForm::FormNotSignedException();
 	}
 	std::cout << executor << " is executing " << *this << "\n";
 	executeAction();
