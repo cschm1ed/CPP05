@@ -17,9 +17,12 @@
 
 class RobotomyRequestForm : public AForm {
 
-	RobotomyRequestForm(std::string const & target);
+public:
+	RobotomyRequestForm(std::string const &target);
+
 	~RobotomyRequestForm();
 
+protected:
 	void executeAction() const;
 
 };

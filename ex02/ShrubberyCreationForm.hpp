@@ -15,12 +15,24 @@
 
 #include "AForm.hpp"
 
+#include <fstream>
+
 class ShrubberyCreationForm : public AForm {
+
 public:
 	ShrubberyCreationForm(const std::string &target);
-	~ShrubberyCreationForm() override;
 
+	~ShrubberyCreationForm();
+
+	class FileOpenException : public std::exception {
+		virtual const char *what() const
+
+		_NOEXCEPT;
+	};
+
+protected:
 	void executeAction() const;
+
 };
 
 

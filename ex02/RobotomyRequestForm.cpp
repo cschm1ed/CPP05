@@ -12,7 +12,8 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotomyRequestForm for " + target, target, 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotomyRequestForm for " + target, target,
+																			72, 45) {
 	std::cout << "RobotomyRequestForm constructor called\n";
 }
 
@@ -22,9 +23,10 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 
 void RobotomyRequestForm::executeAction() const {
 	std::cout << "* --- drilling --- *\n";
+	srand(time(0));
 	if (rand() % 2) {
 		std::cout << _target << " has been robotomized succesfully\n";
-		return ;
+		return;
 	}
 	std::cout << _target << " could not be robotomized\n";
 

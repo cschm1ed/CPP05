@@ -20,37 +20,55 @@ class Bureaucrat;
 
 class AForm {
 public:
-	AForm(const std::string &name, const std::string &target, const unsigned int reqGradeSign, const unsigned int reqGradeExec);
-	AForm(AForm const & other);
+	AForm(const std::string &name, const std::string &target, const unsigned int reqGradeSign,
+		  const unsigned int reqGradeExec);
+
+	AForm(AForm const &other);
+
 	virtual ~AForm() = 0;
 
 
 	const std::string &getName() const;
 
 	bool isIsSigned() const;
+
 	void setIsSigned(bool isSigned);
+
 	int getReqGradeSign() const;
+
 	int getReqGradeExec() const;
+
 	void beSigned(Bureaucrat &signer);
+
 	const std::string &getTarget() const;
 
-class	GradeTooHighException : public std::exception {
-	virtual const char * what() const _NOEXCEPT;
-};
+	class GradeTooHighException : public std::exception {
+		virtual const char *what() const
 
-class	GradeTooLowException : public std::exception {
-	virtual const char * what() const _NOEXCEPT;
-};
+		_NOEXCEPT;
+	};
 
-	void execute(Bureaucrat const & executor) const;
+	class GradeTooLowException : public std::exception {
+		virtual const char *what() const
+
+		_NOEXCEPT;
+	};
+
+	void execute(Bureaucrat const &executor) const;
+
 	virtual void executeAction() const = 0;
 
 protected:
-	const std::string 	_name;
-	const std::string 	_target;
-	bool 			  	_isSigned;
-	const int	_reqGradeSign;
-	const int	_reqGradeExec;
+
+	AForm();
+
+	AForm &operator=(AForm const &rhs);
+
+	const std::string _name;
+	const std::string _target;
+	bool _isSigned;
+	const int _reqGradeSign;
+	const int _reqGradeExec;
 
 };
 

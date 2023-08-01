@@ -13,11 +13,14 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+Bureaucrat::Bureaucrat() {
+	std::cout << "Bureaucrat default constructor called\n";
+}
+
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade) {
 	if (grade < 1) {
 		throw Bureaucrat::GradeTooHighException();
-	}
-	else if (grade > 150) {
+	} else if (grade > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
 	std::cout << "Bureaucrat constructor called\n";

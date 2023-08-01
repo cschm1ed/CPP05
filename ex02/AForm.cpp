@@ -12,16 +12,22 @@
 
 #include "AForm.hpp"
 
-AForm::AForm(const std::string &name, const std::string & target, const unsigned int reqGradeSign, const unsigned int reqGradeExec)
-		: _name(name), _isSigned(false), _reqGradeSign(reqGradeSign), _reqGradeExec(reqGradeExec) {
+AForm::AForm(const std::string &name, const std::string &target, const unsigned int reqGradeSign,
+			 const unsigned int reqGradeExec)
+		: _name(name), _target(target), _isSigned(false), _reqGradeSign(reqGradeSign), _reqGradeExec(reqGradeExec) {
 	std::cout << "AForm constructor called\n";
+}
+
+AForm::AForm() : _name("default"), _target("default"), _isSigned(0), _reqGradeSign(0), _reqGradeExec(0) {
+	std::cout << "AForm default constructor called\n";
 }
 
 AForm::~AForm() {
 	std::cout << "AForm destructor called\n";
 }
 
-AForm::AForm(const AForm &other) : _name(other.getName()), _target(other.getTarget()), _reqGradeSign(other.getReqGradeSign()), _reqGradeExec(other.getReqGradeExec()){
+AForm::AForm(const AForm &other) : _name(other.getName()), _target(other.getTarget()),
+								   _reqGradeSign(other.getReqGradeSign()), _reqGradeExec(other.getReqGradeExec()) {
 	std::cout << "copy assignment constructor called\n";
 }
 
@@ -46,7 +52,8 @@ int AForm::getReqGradeExec() const {
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &form) {
-	os << "AForm: " << form.getName() << "target: " << form.getTarget() << " _isSigned: " << form.isIsSigned() << " _reqGradeSign: " << form.getReqGradeSign()
+	os << "AForm: " << form.getName() << "target: " << form.getTarget() << " _isSigned: " << form.isIsSigned()
+	   << " _reqGradeSign: " << form.getReqGradeSign()
 	   << " _reqGradeExec: " << form.getReqGradeExec();
 	return os;
 }

@@ -22,11 +22,15 @@ class Form {
 public:
 	Form(const std::string &name, const unsigned int reqGradeSign, const unsigned int reqGradeExec);
 
-	virtual ~Form();
+	Form(Form const &other);
+
+	const Form &operator=(Form const &rhs);
+
+	~Form();
 
 	const std::string &getName() const;
 
-	bool isIsSigned() const;
+	bool getIsSigned() const;
 
 	void setIsSigned(bool isSigned);
 
@@ -36,19 +40,26 @@ public:
 
 	void beSigned(Bureaucrat &signer);
 
-class	GradeTooHighException : public std::exception {
-	virtual const char * what() const _NOEXCEPT;
-};
+	class GradeTooHighException : public std::exception {
+		virtual const char *what() const
 
-class	GradeTooLowException : public std::exception {
-	virtual const char * what() const _NOEXCEPT;
-};
+		_NOEXCEPT;
+	};
+
+	class GradeTooLowException : public std::exception {
+		virtual const char *what() const
+
+		_NOEXCEPT;
+	};
 
 private:
-	const std::string 	_name;
-	bool 			  	_isSigned;
-	const int	_reqGradeSign;
-	const int	_reqGradeExec;
+
+	Form();
+
+	const std::string _name;
+	bool _isSigned;
+	const int _reqGradeSign;
+	const int _reqGradeExec;
 
 };
 

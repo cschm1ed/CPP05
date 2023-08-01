@@ -17,6 +17,20 @@ Form::Form(const std::string &name, const unsigned int reqGradeSign, const unsig
 	std::cout << "Form constructor called\n";
 }
 
+Form::Form() : _name("default"), _isSigned(0), _reqGradeSign(0), _reqGradeExec(0) {
+	std::cout << "Form default constructor called\n";
+}
+
+Form::Form(Form const &other) : _name(other.getName()), _isSigned(other._isSigned),
+								_reqGradeSign(other.getReqGradeSign()), _reqGradeExec(other.getReqGradeExec()) {
+	std::cout << "Form copy constructor called\n";
+}
+
+const Form &Form::operator=(const Form &rhs) {
+	_isSigned = rhs._isSigned;
+	return *this;
+}
+
 Form::~Form() {
 	std::cout << "Form destructor called\n";
 }
@@ -42,8 +56,9 @@ int Form::getReqGradeExec() const {
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &form) {
-	os << "Form: " << form._name << " _isSigned: " << form._isSigned << " _reqGradeSign: " << form._reqGradeSign
-	   << " _reqGradeExec: " << form._reqGradeExec;
+	os << "Form: " << form.getName() << " _isSigned: " << form.getIsSigned() << " _reqGradeSign: "
+	   << form.getReqGradeSign()
+	   << " _reqGradeExec: " << form.getReqGradeExec();
 	return os;
 }
 

@@ -22,31 +22,43 @@ class Bureaucrat {
 
 public:
 	Bureaucrat(const std::string &name, int grade);
+
 	Bureaucrat(Bureaucrat const &other);
-	virtual ~Bureaucrat();
-	Bureaucrat &operator=(Bureaucrat const &);
+
+	~Bureaucrat();
+
 	const std::string &getName() const;
+
 	void setGrade(int grade);
+
 	int getGrade() const;
 
 	void incrementGrade(unsigned int amount);
+
 	void decrementGrade(unsigned int amount);
+
 	void signForm(AForm &toSign);
 
 	class GradeTooHighException : public std::exception {
-		 virtual const char *what() const _NOEXCEPT;
+		virtual const char *what() const
+
+		_NOEXCEPT;
 	};
 
 	class GradeTooLowException : public std::exception {
-		virtual const char *what() const _NOEXCEPT;
+		virtual const char *what() const
+
+		_NOEXCEPT;
 	};
 
-	void executeForm(AForm const & form) const;
+	void executeForm(AForm const &form) const;
 
 private:
 
-	const std::string	_name;
-	int 				_grade;
+	Bureaucrat &operator=(Bureaucrat const &);
+
+	const std::string _name;
+	int _grade;
 
 };
 

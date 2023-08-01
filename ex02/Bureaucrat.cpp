@@ -16,8 +16,7 @@
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade) {
 	if (grade < 1) {
 		throw Bureaucrat::GradeTooHighException();
-	}
-	else if (grade > 150) {
+	} else if (grade > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
 	std::cout << "Bureaucrat constructor called\n";
@@ -80,20 +79,20 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 void Bureaucrat::signForm(AForm &toSign) {
 	if (_grade > toSign.getReqGradeSign()) {
 		std::cout << _name << " couldn't sign " << toSign.getName() << " because his grade is to low.\n";
-		return ;
+		return;
 	}
-	std::cout << _name << " signed " << toSign.getName();
+	std::cout << _name << " signed " << toSign.getName() << "\n";
 	toSign.setIsSigned(true);
 }
 
-void Bureaucrat::executeForm(AForm const & form) const {
+void Bureaucrat::executeForm(AForm const &form) const {
 	if (_grade > form.getReqGradeExec()) {
-		std::cout << "Bureaucrat " << _name << " of grade " << _grade << " cannot sign form " << _name << " of grade " << form.getReqGradeExec() << "\n";
-		return ;
-	}
-	else if (!form.isIsSigned()) {
+		std::cout << "Bureaucrat " << _name << " of grade " << _grade << " cannot sign form " << _name << " of grade "
+				  << form.getReqGradeExec() << "\n";
+		return;
+	} else if (!form.isIsSigned()) {
 		std::cout << "Form " << form.getName() << " is not signed and can thus not be executed\n";
-		return ;
+		return;
 	}
 	std::cout << *this << "is executing Form " << form << "\n";
 	form.executeAction();

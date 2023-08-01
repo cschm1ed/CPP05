@@ -13,31 +13,31 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-int	main() {
-	Bureaucrat* Bert = nullptr;
+int main() {
+	Bureaucrat *Bert = nullptr;
 
 	try {
 		Bert = new Bureaucrat("Bert", 1);
-	} catch (const std::exception & e) {
-		std::cerr <<  e.what() << "\n";
-	}
-
-	try {
-		Bureaucrat	Malcolm("Malcolm", 0);
-	} catch (const std::exception & e) {
+	} catch (const std::exception &e) {
 		std::cerr << e.what() << "\n";
 	}
 
 	try {
-		Bureaucrat	Hannah("Hannah", 151);
-	} catch (const std::exception & e) {
+		Bureaucrat Malcolm("Malcolm", 0);
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << "\n";
+	}
+
+	try {
+		Bureaucrat Hannah("Hannah", 151);
+	} catch (const std::exception &e) {
 		std::cerr << e.what() << "\n";
 	}
 
 	Bert->decrementGrade(10);
 
 	try {
-		Bureaucrat	Alberto("Alberto", 10);
+		Bureaucrat Alberto("Alberto", 10);
 		try {
 			Alberto.incrementGrade(100);
 		} catch (const std::exception &e) {
@@ -54,7 +54,7 @@ int	main() {
 
 	std::cout << *Bert << "\n";
 
-	delete	Bert;
+	delete Bert;
 
 	return 0;
 }

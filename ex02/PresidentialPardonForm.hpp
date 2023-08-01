@@ -17,9 +17,12 @@
 
 class PresidentialPardonForm : public AForm {
 
-	PresidentialPardonForm(std::string const & target);
+public:
+	PresidentialPardonForm(std::string const &target);
+
 	~PresidentialPardonForm();
 
+protected:
 	void executeAction() const;
 };
 
