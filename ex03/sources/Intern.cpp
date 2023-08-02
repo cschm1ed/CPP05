@@ -55,7 +55,7 @@ AForm *Intern::makeForm(std::string const &name, std::string const &target) {
 			return new PresidentialPardonForm(target);
 			break;
 		default:
-			std::cout << RED << "Intern couldnt find " << name << " for" << target << "\n" << RESET;
+			std::cout << RED << "Intern couldnt find " << name << " for " << target << "\n" << RESET;
 			return nullptr;
 	}
 }

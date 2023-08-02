@@ -18,26 +18,33 @@ int main() {
 
 	try {
 		Bert = new Bureaucrat("Bert", 1);
+		std::cout << "\n";
 	} catch (const std::exception &e) {
 		std::cerr << e.what() << "\n";
 	}
+	std::cout << "\n";
 
 	try {
 		Bureaucrat Malcolm("Malcolm", 0);
+		std::cout << "\n";
 	} catch (const std::exception &e) {
 		std::cerr << e.what() << "\n";
 	}
+	std::cout << "\n";
 
 	try {
 		Bureaucrat Hannah("Hannah", 151);
+		std::cout << "\n";
 	} catch (const std::exception &e) {
 		std::cerr << e.what() << "\n";
 	}
+	std::cout << "\n";
 
 	Bert->decrementGrade(10);
 
 	try {
 		Bureaucrat Alberto("Alberto", 10);
+		std::cout << "\n";
 		try {
 			Alberto.incrementGrade(100);
 		} catch (const std::exception &e) {

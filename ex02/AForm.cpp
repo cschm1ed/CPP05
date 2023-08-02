@@ -54,7 +54,7 @@ int AForm::getReqGradeExec() const {
 std::ostream &operator<<(std::ostream &os, const AForm &form) {
 	os << "AForm: " << form.getName() << "target: " << form.getTarget() << " _isSigned: " << form.isIsSigned()
 	   << " _reqGradeSign: " << form.getReqGradeSign()
-	   << " _reqGradeExec: " << form.getReqGradeExec();
+	   << " _reqGradeExec: " << form.getReqGradeExec() << "\n";
 	return os;
 }
 
